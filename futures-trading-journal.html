@@ -1344,6 +1344,11 @@ document.addEventListener('keydown',e=>{
 init();
 persist(); // save any migrated trades
 
+/* Lock to portrait where the platform allows it (Android PWA/fullscreen).
+   iOS Safari doesn't support this - the #rotate-warning overlay covers it there.
+   The Capacitor app gets a true OS-level lock via config instead. */
+try{ if(screen.orientation && screen.orientation.lock) screen.orientation.lock('portrait').catch(()=>{}); }catch(e){}
+
 /* ================= ADS (AdMob via Capacitor) =================
    Two modes:
    1. Inside the iOS/Android app (Capacitor + @capacitor-community/admob):
