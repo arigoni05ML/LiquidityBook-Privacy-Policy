@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#0a0d14">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Trading Journal">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 4v3M7 17v3M4.5 7h5v10h-5zM17 2v4M17 18v4M14.5 6h5v12h-5z'/%3E%3C/svg%3E">
 <title>Futures Trading Journal</title>
 <style>
@@ -13,7 +17,7 @@
   --accent:#60a5fa; --accent2:#38bdf8; --gold:#fbbf24; --purple:#a78bfa; --cyan:#22d3ee;
 }
 *{box-sizing:border-box; margin:0; padding:0;}
-html{-webkit-text-size-adjust:100%;}
+html{-webkit-text-size-adjust:100%; background:var(--bg);}
 body{
   background:
     radial-gradient(1100px 480px at 50% -10%, rgba(96,165,250,.09), transparent 60%),
@@ -33,7 +37,7 @@ body.lock{overflow:hidden;}
 #rotate-warning p{color:var(--muted);font-size:14px;max-width:320px;}
 .ic{width:18px; height:18px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; flex:none;}
 /* ---------- header ---------- */
-header{display:flex; align-items:center; gap:14px; padding:12px 20px; border-bottom:1px solid var(--border);
+header{display:flex; align-items:center; gap:14px; padding:calc(12px + env(safe-area-inset-top,0px)) 20px 12px; border-bottom:1px solid var(--border);
   flex-wrap:wrap; position:sticky; top:0; background:rgba(10,13,20,.85); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); z-index:50;}
 .logo{width:36px; height:36px; border-radius:11px; background:linear-gradient(135deg,#3b82f6,#22d3ee);
   display:flex; align-items:center; justify-content:center; box-shadow:0 4px 14px rgba(56,189,248,.35); flex:none;}
@@ -266,7 +270,7 @@ footer{position:fixed; bottom:0; left:0; right:0; background:rgba(13,18,32,.9); 
   .tabbar{display:flex;}
   footer{display:none;}
   body{padding-bottom:calc(86px + env(safe-area-inset-bottom));}
-  header{padding:10px 14px;}
+  header{padding:calc(10px + env(safe-area-inset-top,0px)) 14px 10px;}
   main{padding:12px;}
   .panel{padding:14px; border-radius:14px;}
   .grid{grid-template-columns:repeat(2,1fr); gap:10px;}
@@ -281,7 +285,7 @@ footer{position:fixed; bottom:0; left:0; right:0; background:rgba(13,18,32,.9); 
   .cal-cell .c{display:none;}
   .modal{padding:0; align-items:stretch;}
   .wcard{max-width:none; border-radius:0; border:none; min-height:100dvh; margin:0;
-    padding:18px 16px calc(20px + env(safe-area-inset-bottom));}
+    padding:calc(18px + env(safe-area-inset-top,0px)) 16px calc(20px + env(safe-area-inset-bottom));}
   .wfoot{position:sticky; bottom:0; background:var(--panel); padding-top:10px; margin-top:auto;}
   .wprev{grid-template-columns:repeat(3,1fr);}
   .toast{bottom:calc(100px + env(safe-area-inset-bottom)); width:max-content; max-width:92vw;}
